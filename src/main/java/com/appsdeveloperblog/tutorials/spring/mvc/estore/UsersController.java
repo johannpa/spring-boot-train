@@ -20,6 +20,7 @@ public class UsersController {
 
     @GetMapping(path = "/users")
     public ModelAndView getUsers(@RequestParam(name = "limit", defaultValue = "30") int limit) {
+        System.out.println("limit=" + limit);
         ModelAndView modelAndView = new ModelAndView("users");
         return modelAndView;
     }
