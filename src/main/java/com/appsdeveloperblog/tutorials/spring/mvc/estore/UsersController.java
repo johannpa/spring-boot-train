@@ -19,7 +19,7 @@ public class UsersController {
     }
 
     @GetMapping(path = "/users")
-    public ModelAndView getUsers(@RequestParam(name = "limit", required = false) int limit) {
+    public ModelAndView getUsers(@RequestParam(name = "limit", defaultValue = "30") int limit) {
         ModelAndView modelAndView = new ModelAndView("users");
         return modelAndView;
     }
