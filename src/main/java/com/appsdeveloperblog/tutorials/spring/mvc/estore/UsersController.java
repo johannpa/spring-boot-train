@@ -1,9 +1,8 @@
 package com.appsdeveloperblog.tutorials.spring.mvc.estore;
 
+import com.appsdeveloperblog.tutorials.spring.mvc.estore.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,5 +22,15 @@ public class UsersController {
         System.out.println("limit=" + limit);
         ModelAndView modelAndView = new ModelAndView("users");
         return modelAndView;
+    }
+
+    @PostMapping(path = "/users")
+    public String signupFormSubmit(@ModelAttribute User user) {
+        return "signup-result";
+    }
+
+    @GetMapping(path = "/signup")
+    public String signupForm() {
+        return "signup";
     }
 }
