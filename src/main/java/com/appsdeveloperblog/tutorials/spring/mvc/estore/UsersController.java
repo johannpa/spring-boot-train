@@ -1,11 +1,14 @@
 package com.appsdeveloperblog.tutorials.spring.mvc.estore;
 
 import com.appsdeveloperblog.tutorials.spring.mvc.estore.model.User;
+import com.appsdeveloperblog.tutorials.spring.mvc.estore.model.UserRest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.UUID;
 
 @Controller
 public class UsersController {
@@ -32,8 +35,15 @@ public class UsersController {
     //}
 
     @PostMapping(path = "users")
+    @ResponseBody
     public ResponseEntity createUser(@RequestBody User user) {
-        return ResponseEntity.ok(HttpStatus.OK);
+        return new ResponseEntity(
+                new UserRest(UUID.randomUUID().toString(),
+                        user.getFirstName(),
+                        user.getLastName(),
+                        user.getEmail()
+                        )
+                ,HttpStatus.OK);
     }
 
     @GetMapping(path = "/signup")
