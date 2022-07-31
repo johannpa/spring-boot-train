@@ -1,6 +1,8 @@
 package com.appsdeveloperblog.tutorials.spring.mvc.estore;
 
 import com.appsdeveloperblog.tutorials.spring.mvc.estore.model.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,9 +26,14 @@ public class UsersController {
         return modelAndView;
     }
 
-    @PostMapping(path = "/users")
-    public String signupFormSubmit(@ModelAttribute User user) {
-        return "signup-result";
+    //@PostMapping(path = "/users")
+    //public String signupFormSubmit(@ModelAttribute User user) {
+    //    return "signup-result";
+    //}
+
+    @PostMapping(path = "users")
+    public ResponseEntity createUser(@RequestBody User user) {
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @GetMapping(path = "/signup")
